@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Jordon-Xu&#39;s Blog</title>
+  
+  <subtitle>网站正在开发中</subtitle>
+  <link href="http://example.com/atom.xml" rel="self"/>
+  
+  <link href="http://example.com/"/>
+  <updated>2021-10-01T01:36:45.165Z</updated>
+  <id>http://example.com/</id>
+  
+  <author>
+    <name>Jordon_Xu</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>无人驾驶小车项目（FSD）（测试）</title>
+    <link href="http://example.com/2021/02/07/%E6%97%A0%E4%BA%BA%E9%A9%BE%E9%A9%B6%E5%B0%8F%E8%BD%A6%E9%A1%B9%E7%9B%AE%EF%BC%88FSD%EF%BC%89%EF%BC%88%E6%B5%8B%E8%AF%95%EF%BC%89/"/>
+    <id>http://example.com/2021/02/07/%E6%97%A0%E4%BA%BA%E9%A9%BE%E9%A9%B6%E5%B0%8F%E8%BD%A6%E9%A1%B9%E7%9B%AE%EF%BC%88FSD%EF%BC%89%EF%BC%88%E6%B5%8B%E8%AF%95%EF%BC%89/</id>
+    <published>2021-02-07T01:41:40.000Z</published>
+    <updated>2021-10-01T01:36:45.165Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>to simulate FSD of Tesla at home</p><h2 id="Build-the-car"><a href="#Build-the-car" class="headerlink" title="Build the car"></a>Build the car</h2><h4 id="3D-modeling-and-3D-printing"><a href="#3D-modeling-and-3D-printing" class="headerlink" title="3D modeling and 3D printing"></a>3D modeling and 3D printing</h4><h4 id="core-of-NVIDIA™-JETSON-NANO™-development-kit"><a href="#core-of-NVIDIA™-JETSON-NANO™-development-kit" class="headerlink" title="core of NVIDIA™ JETSON NANO™ development kit"></a>core of NVIDIA™ JETSON NANO™ development kit</h4><h4 id="ultra-sound-sensor-infrared-sensor-camera"><a href="#ultra-sound-sensor-infrared-sensor-camera" class="headerlink" title="ultra sound sensor, infrared sensor, camera"></a>ultra sound sensor, infrared sensor, camera</h4><h2 id="Core-technology"><a href="#Core-technology" class="headerlink" title="Core technology"></a>Core technology</h2><ul><li>Lane detection by visual</li></ul><ol><li>Image correction</li><li>Image masking</li><li>Detection and draw<br><img src="http://r.photo.store.qq.com/psc?/V52O6T4v1BaKX82y9mu62U2PpX2MjRTM/45NBuzDIW489QBoVep5mcWhCWlT2mPqcJ06TOOEZS9GD8YsmeXqI0lGx9.n4DmOCeS3by.au5ySrywtiTc198U2NP0HWgVO7gUCWSobmIU4!/r" alt="Lane dection"><iframe src="//player.bilibili.com/player.html?aid=331093783&bvid=BV1VA411H7Q1&cid=281367706&page=1" width="800px" height="600px" border="0" frameborder="yes" framespacing="0" allowfullscreen="true"> </iframe><iframe src="//player.bilibili.com/player.html?aid=890260479&bvid=BV1pP4y1a7Lm&cid=403883060&page=1" width="800px" height="600px" border="0" frameborder="yes" framespacing="0" allowfullscreen="true"> </iframe></li></ol><ul><li>Object detection by visual using YOLOV4</li><li>Distance detection<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">__ultra_detection</span>(<span class="params">self</span>):</span></span><br><span class="line">    gpio.output(channels=self.__trig_pin, values=gpio.HIGH)</span><br><span class="line">    time.sleep(<span class="number">0.000015</span>)</span><br><span class="line">    gpio.output(channels=self.__trig_pin, values=gpio.LOW)</span><br><span class="line">    </span><br><span class="line">    tic = time.time()</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">not</span> gpio.<span class="built_in">input</span>(self.__echo_pin):</span><br><span class="line">        <span class="keyword">if</span> time.time() - tic &gt; self.__timeout:</span><br><span class="line">           <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">    tic = time.time()</span><br><span class="line">    <span class="keyword">while</span> gpio.<span class="built_in">input</span>(self.__echo_pin):</span><br><span class="line">        <span class="keyword">if</span> time.time() - tic &gt; self.__timeout:</span><br><span class="line">           <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">    toc = time.time()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> (toc - tic) * <span class="number">340</span> / <span class="number">2</span></span><br></pre></td></tr></table></figure></li><li>Multi threading<table><thead><tr><th>线程1</th><th>线程2</th><th>线程3</th></tr></thead><tbody><tr><td>内容</td><td>内容</td><td>内容</td></tr><tr><td>内容</td><td>内容</td><td>内容</td></tr><tr><td>内容</td><td>内容</td><td>内容</td></tr></tbody></table><blockquote><p>Blog 基础功能语法测试</p><p><a href="https://blog.csdn.net/weixin_45366499/article/details/106558047">安装文章</a></p><p><a href="https://www.cnblogs.com/whiremapple/p/12419113.html#/c/subject/p/12419113.html">基础功能</a></p><p><a href="https://blog.csdn.net/u014061630/article/details/81359144">图文详解</a></p><p><a href="https://sunhwee.gitee.io/posts/7e1e06e9.html">视频插入</a></p><p><a href="https://butterfly.js.org/">Butterfly网页开发设置</a></p></blockquote></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;Introduction&quot;&gt;&lt;a href=&quot;#Introduction&quot; class=&quot;headerlink&quot; title=&quot;Introduction&quot;&gt;&lt;/a&gt;Introduction&lt;/h2&gt;&lt;p&gt;to simulate FSD of Tesla at ho</summary>
+      
+    
+    
+    
+    <category term="FSD" scheme="http://example.com/categories/FSD/"/>
+    
+    
+    <category term="python" scheme="http://example.com/tags/python/"/>
+    
+    <category term="FSD" scheme="http://example.com/tags/FSD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>发布第一篇个人博客</title>
+    <link href="http://example.com/2021/02/05/%E5%8F%91%E5%B8%83%E7%AC%AC%E4%B8%80%E7%AF%87%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://example.com/2021/02/05/%E5%8F%91%E5%B8%83%E7%AC%AC%E4%B8%80%E7%AF%87%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</id>
+    <published>2021-02-05T15:47:00.000Z</published>
+    <updated>2021-02-06T15:41:25.665Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><p>完成环境配置</p><h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><p>准备搭建主题</p><h2 id="开始设置网站"><a href="#开始设置网站" class="headerlink" title="开始设置网站"></a>开始设置网站</h2><p>在阿里成功申请域名：<a href="http://www.jordon-xu.cn/">www.jordon-xu.cn</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;第一章&quot;&gt;&lt;a href=&quot;#第一章&quot; class=&quot;headerlink&quot; title=&quot;第一章&quot;&gt;&lt;/a&gt;第一章&lt;/h2&gt;&lt;p&gt;完成环境配置&lt;/p&gt;
+&lt;h2 id=&quot;第二章&quot;&gt;&lt;a href=&quot;#第二章&quot; class=&quot;headerlink&quot; title=&quot;第</summary>
+      
+    
+    
+    
+    <category term="test" scheme="http://example.com/categories/test/"/>
+    
+    
+    <category term="python" scheme="http://example.com/tags/python/"/>
+    
+    <category term="test" scheme="http://example.com/tags/test/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://example.com/2021/02/05/hello-world/"/>
+    <id>http://example.com/2021/02/05/hello-world/</id>
+    <published>2021-02-05T15:34:03.398Z</published>
+    <updated>2021-02-05T15:34:03.398Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
