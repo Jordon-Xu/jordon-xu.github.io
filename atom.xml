@@ -56,11 +56,11 @@
     <category term="FSD" scheme="http://example.com/categories/FSD/"/>
     
     
+    <category term="machine vision" scheme="http://example.com/tags/machine-vision/"/>
+    
     <category term="python" scheme="http://example.com/tags/python/"/>
     
     <category term="FSD" scheme="http://example.com/tags/FSD/"/>
-    
-    <category term="machine vision" scheme="http://example.com/tags/machine-vision/"/>
     
   </entry>
   

@@ -53,6 +53,13 @@
 
   
   <url>
+    <loc>http://example.com/tags/machine-vision/</loc>
+    <lastmod>2021-10-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://example.com/tags/python/</loc>
     <lastmod>2021-10-02</lastmod>
     <changefreq>daily</changefreq>
@@ -61,13 +68,6 @@
   
   <url>
     <loc>http://example.com/tags/FSD/</loc>
-    <lastmod>2021-10-02</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/tags/machine-vision/</loc>
     <lastmod>2021-10-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
