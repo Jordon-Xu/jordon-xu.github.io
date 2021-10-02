@@ -4,7 +4,7 @@
   <url>
     <loc>http://example.com/2021/10/01/Autonomous-driving-experimental-prototype/</loc>
     
-    <lastmod>2021-10-01</lastmod>
+    <lastmod>2021-10-02</lastmod>
     
   </url>
   
@@ -36,20 +36,6 @@
     
   </url>
   
-  <url>
-    <loc>http://example.com/2021/02/05/%E5%8F%91%E5%B8%83%E7%AC%AC%E4%B8%80%E7%AF%87%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
-    
-    <lastmod>2021-02-06</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://example.com/2021/02/05/hello-world/</loc>
-    
-    <lastmod>2021-02-05</lastmod>
-    
-  </url>
-  
 
   <url>
     <loc>http://example.com/</loc>
@@ -58,13 +44,6 @@
     <priority>1.0</priority>
   </url>
 
-  
-  <url>
-    <loc>http://example.com/tags/machine-vision/</loc>
-    <lastmod>2021-10-02</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
   
   <url>
     <loc>http://example.com/tags/python/</loc>
@@ -81,7 +60,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/tags/test/</loc>
+    <loc>http://example.com/tags/machine-vision/</loc>
     <lastmod>2021-10-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -91,13 +70,6 @@
   
   <url>
     <loc>http://example.com/categories/FSD/</loc>
-    <lastmod>2021-10-02</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/categories/test/</loc>
     <lastmod>2021-10-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
