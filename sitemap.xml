@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://example.com/2021/10/01/Autonomous-driving-experimental-prototype/</loc>
+    <loc>http://example.com/2021/10/02/Automatic-Driving-Experiment-Platform-Based-on-Machine-Vision/</loc>
     
-    <lastmod>2021-10-06</lastmod>
+    <lastmod>2021-10-16</lastmod>
     
   </url>
   
   <url>
-    <loc>http://example.com/2021/10/02/Automatic-Driving-Experiment-Platform-Based-on-Machine-Vision/</loc>
+    <loc>http://example.com/2021/10/01/Autonomous-driving-experimental-prototype/</loc>
     
     <lastmod>2021-10-06</lastmod>
     
@@ -39,7 +39,7 @@
 
   <url>
     <loc>http://example.com/</loc>
-    <lastmod>2021-10-06</lastmod>
+    <lastmod>2021-10-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -47,21 +47,21 @@
   
   <url>
     <loc>http://example.com/tags/machine-vision/</loc>
-    <lastmod>2021-10-06</lastmod>
+    <lastmod>2021-10-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/python/</loc>
-    <lastmod>2021-10-06</lastmod>
+    <lastmod>2021-10-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/FSD/</loc>
-    <lastmod>2021-10-06</lastmod>
+    <lastmod>2021-10-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -70,7 +70,7 @@
   
   <url>
     <loc>http://example.com/categories/FSD/</loc>
-    <lastmod>2021-10-06</lastmod>
+    <lastmod>2021-10-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
